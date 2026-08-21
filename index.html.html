@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nandhan A S — Data Analyst & Data Science professional. Python, SQL, Machine Learning, Data Visualization.">
+<title>Nandhan A S | Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c1015;
+    --bg-raised:#12171f;
+    --bg-card:#151b24;
+    --line:#232b36;
+    --text:#e7ebf1;
+    --text-dim:#9aa7b8;
+    --text-faint:#5f6b7c;
+    --accent:#f2b705;
+    --accent-dim:#8a6a08;
+    --accent2:#2dd4bf;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .container{width:min(1080px,92%);margin:auto}
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
+
+  /* ---------- Nav ---------- */
+  nav{position:sticky;top:0;z-index:20;background:rgba(12,16,21,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .container{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .logo{font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--text)}
+  .logo span{color:var(--accent)}
+  .navlinks{display:flex;gap:26px;font-family:var(--font-mono);font-size:13px}
+  .navlinks a{color:var(--text-dim)}
+  .navlinks a:hover{color:var(--text);text-decoration:none}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:86px 0 60px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;right:-160px;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(242,183,5,.10),transparent 70%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+  @media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+  h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.05;margin:16px 0 10px;font-weight:700}
+  .role{font-family:var(--font-mono);font-size:17px;color:var(--accent);margin:0 0 18px}
+  .intro{max-width:560px;color:var(--text-dim);font-size:16.5px}
+  .buttons{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:12px 20px;border-radius:6px;background:var(--accent);color:#0c1015;font-weight:600;font-family:var(--font-mono);font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease}
+  .btn:hover{transform:translateY(-2px);text-decoration:none}
+  .btn.secondary{background:transparent;border:1px solid var(--line);color:var(--text)}
+  .contact-strip{margin-top:26px;display:flex;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;color:var(--text-dim)}
+  .contact-strip a{color:var(--text-dim)}
+  .contact-strip a:hover{color:var(--accent2)}
+
+  /* signature sparkline panel */
+  .spark-panel{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:22px}
+  .spark-panel .label{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;display:flex;justify-content:space-between}
+  .spark-panel svg{width:100%;height:140px;display:block}
+  .spark-legend{display:flex;gap:16px;margin-top:14px;font-family:var(--font-mono);font-size:12px;color:var(--text-dim)}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:var(--font-display);font-size:28px;margin:0 0 8px;font-weight:600}
+  .section-intro{color:var(--text-dim);max-width:640px;margin-bottom:34px;font-size:15.5px}
+
+  .about-grid{display:grid;grid-template-columns:auto 1fr;gap:40px}
+  @media (max-width:700px){.about-grid{grid-template-columns:1fr}}
+  .about-grid p{color:var(--text-dim)}
+  .edu-card{font-family:var(--font-mono);font-size:13px;background:var(--bg-card);border:1px solid var(--line);border-radius:8px;padding:16px 18px;min-width:230px;color:var(--text-dim)}
+  .edu-card strong{color:var(--text);display:block;font-family:var(--font-body);font-size:15px;margin-bottom:4px}
+
+  /* skills as data-table rows */
+  .skills-table{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .skill-row{display:grid;grid-template-columns:160px 1fr;border-top:1px solid var(--line)}
+  .skill-row:first-child{border-top:none}
+  .skill-row .cat{font-family:var(--font-mono);font-size:12.5px;color:var(--accent2);padding:16px 18px;background:var(--bg-raised);letter-spacing:.05em;text-transform:uppercase}
+  .skill-row .items{padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .chip{font-family:var(--font-mono);font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:5px;color:var(--text-dim);background:var(--bg-card)}
+  @media (max-width:600px){.skill-row{grid-template-columns:1fr}.skill-row .cat{padding:10px 18px}}
+
+  /* projects */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column}
+  .card h3{margin:0 0 8px;font-family:var(--font-display);font-size:19px;font-weight:600}
+  .card p{color:var(--text-dim);font-size:14.5px;margin:0 0 14px}
+  .metric-line{font-family:var(--font-mono);font-size:12.5px;color:var(--accent);border-left:2px solid var(--accent-dim);padding-left:10px;margin-bottom:14px}
+  .metric-line.placeholder{color:var(--text-faint);font-style:italic}
+  .tags{margin-bottom:14px}
+  .tag{display:inline-block;padding:4px 9px;margin:0 6px 6px 0;border-radius:5px;background:var(--bg-raised);color:var(--text-dim);font-size:12px;font-family:var(--font-mono)}
+  .card .repo-link{margin-top:auto;font-family:var(--font-mono);font-size:13px}
+
+  /* what I bring */
+  .bring-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:760px){.bring-grid{grid-template-columns:1fr}}
+  .bring-card{padding:22px 0;border-top:2px solid var(--accent-dim)}
+  .bring-card h3{font-family:var(--font-display);font-size:17px;margin:0 0 8px}
+  .bring-card p{color:var(--text-dim);font-size:14.5px;margin:0}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:640px}
+  @media (max-width:600px){.contact-grid{grid-template-columns:1fr}}
+  .contact-card{background:var(--bg-card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:flex;align-items:center;gap:14px}
+  .contact-card .ic{font-family:var(--font-mono);color:var(--accent);font-size:18px}
+  .contact-card .meta{font-family:var(--font-mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em}
+  .contact-card .val{font-size:14.5px;color:var(--text);word-break:break-all}
+
+  footer{padding:36px 0;text-align:center;color:var(--text-faint);font-family:var(--font-mono);font-size:13px}
+  footer a{color:var(--text-faint)}
+
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">nandhan<span>.</span>as</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#tech-skills">Technical Skills</a>
+      <a href="#skills">Skills</a>
+      <a href="#strength">Strength</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Data Analyst · Data Science · ML</span>
+      <h1>Nandhan A S</h1>
+      <p class="role">Data Analyst &amp; Data Science Professional</p>
+      <p class="intro">Posses hands on knowledge of Python, SQL, Excel, Statistics, Data Visualization and Data Analysis.</p>
+      <div class="buttons">
+        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn secondary" href="#projects">View projects</a>
+        <a class="btn secondary" href="https://github.com/Nandhan357" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="contact-strip">
+        <a href="mailto:asnandhan2004@gmail.com">asnandhan2004@gmail.com</a>
+        <a href="https://www.linkedin.com/in/nandhan-a-s/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="tel:+917736227532">+91 77362 27532</a>
+      </div>
+    </div>
+
+    <div class="spark-panel">
+      <div class="label"><span>skills_activity.csv</span><span>2026</span></div>
+      <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polyline points="0,110 30,95 60,100 90,70 120,80 150,50 180,60 210,35 240,45 270,20 300,28"
+          fill="none" stroke="#2dd4bf" stroke-width="2.5"/>
+        <polyline points="0,125 30,120 60,110 90,112 120,95 150,98 180,80 210,85 240,60 270,65 300,40"
+          fill="none" stroke="#f2b705" stroke-width="2.5"/>
+        <g fill="#5f6b7c" font-family="JetBrains Mono" font-size="9">
+          <text x="0" y="138">Q1</text><text x="270" y="138">Now</text>
+        </g>
+      </svg>
+      <div class="spark-legend">
+        <span><i class="dot" style="background:#2dd4bf"></i>Python / ML skill depth</span>
+        <span><i class="dot" style="background:#f2b705"></i>Project output</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-grid">
+      <div class="edu-card">
+        <strong>Diploma in Data Science, AI &amp; ML</strong>
+        Keltro Knowledge Center<br>Vazhuthacaud<br><span style="color:var(--text-faint)">In progress</span>
+      </div>
+      <p>I'm currently pursuing a Diploma in Data Science with AI and Machine Learning, building practical, job-ready skills through hands-on projects rather than just coursework. I'm looking for entry-level Data Analyst, Business Analyst, or ML Analyst opportunities where I can keep growing while contributing from day one.</p>
+    </div>
+  </section>
+
+  <section id="tech-skills">
+    <h2>Technical Skills</h2>
+    <p class="section-intro">Organized by where I use them in the analysis workflow — from raw data to a finished insight.</p>
+    <div class="skills-table">
+      <div class="skill-row">
+        <div class="cat">Programming Language</div>
+        <div class="items"><span class="chip">Python</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">Data Wrangling</div>
+        <div class="items"><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Data Cleaning</span><span class="chip">EDA</span><span class="chip">Python</span><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Scikit-learn</span><span class="chip">Selenium</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">Visualization</div>
+        <div class="items"><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Power BI</span><span class="chip">Excel</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">AI</div>
+        <div class="items"><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">Artificial Intelligence</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="cat">Tools</div>
+        <div class="items"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Google Colab</span><span class="chip">VS Code</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="section-intro">Core skills that shape how I approach problems and work with data.</p>
+    <div class="skills-table">
+      <div class="skill-row">
+        <div class="cat">Core Skills</div>
+        <div class="items"><span class="chip">Problem Solving</span><span class="chip">Analytical Thinking</span><span class="chip">Business/Domain Understanding</span><span class="chip">Communication</span><span class="chip">Presentation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="strength">
+    <h2>Strength</h2>
+    <p class="section-intro">What drives how I work.</p>
+    <div class="bring-grid">
+      <div class="bring-card">
+        <h3>Strong Interest in Data</h3>
+        <p>Genuine interest in working with data and solving real world problems.</p>
+      </div>
+      <div class="bring-card">
+        <h3>Team &amp; Independent Work</h3>
+        <p>Comfortable working independently or with a team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <p class="section-intro">Selected work spanning exploratory analysis, business insight, and machine learning. <em style="color:var(--text-faint)">Metric lines below are placeholders — swap in your real headline numbers for each project.</em></p>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Credit Card Fraud Detection Using Deep Learning</h3>
+        <p>A deep learning neural network built to detect fraudulent credit card transactions, formulated as a binary classification problem. The workflow covers data loading, EDA, missing-value and duplicate checks, categorical encoding, train-test split, feature scaling, and class-imbalance handling via class weights. The network uses two 32-neuron ReLU dense layers and a sigmoid output layer, trained with the Adam optimizer and binary cross-entropy loss.</p>
+        <div class="metric-line">98.9% test accuracy · 70% fraud recall · 66% fraud F1 · 21/30 frauds caught</div>
+        <div class="tags"><span class="tag">python</span><span class="tag">deep-learning</span><span class="tag">tensorflow-keras</span><span class="tag">fraud-detection</span></div>
+        <a class="repo-link" href="https://github.com/Nandhan357" target="_blank" rel="noopener">Open repository →</a>
+      </div>
+
+      <div class="card">
+        <h3>Telco Customer Churn Prediction</h3>
+        <p>This project focuses on analyzing customer churn in a telecommunications company and building machine learning classification models to predict whether a customer is likely to churn. The project follows a complete machine learning workflow, including data exploration, data preprocessing, exploratory data analysis (EDA), visualization, model training, model evaluation, and model comparison. The dataset contains 7,043 customer records and 21 features, with Churn as the target variable.</p>
+        <div class="tags"><span class="tag">python</span><span class="tag">machine-learning</span><span class="tag">classification</span></div>
+        <a class="repo-link" href="https://github.com/Nandhan357/Telco-Customer_Churn_prediction" target="_blank" rel="noopener">Open repository →</a>
+      </div>
+
+      <div class="card">
+        <h3>Bengaluru House Price Prediction Analysis</h3>
+        <p>This project predicts house prices in Bangalore using Machine Learning regression models. It demonstrates the complete machine learning workflow, from data preprocessing and exploratory data analysis (EDA) to model training, evaluation, and prediction. The project uses property features such as location, total square footage, number of bedrooms, bathrooms, and other relevant attributes to estimate house prices.</p>
+        <div class="tags"><span class="tag">python</span><span class="tag">machine-learning</span><span class="tag">regression</span></div>
+        <a class="repo-link" href="https://github.com/Nandhan357/Bengaluru_house-Prediction-Analysis" target="_blank" rel="noopener">Open repository →</a>
+      </div>
+
+      <div class="card">
+        <h3>IBM HR Analytics — Employee Attrition</h3>
+        <p>Employee attrition is a major challenge for organizations as it affects productivity, recruitment costs, and workforce stability. This project analyzes the IBM HR Analytics Employee Attrition dataset to identify factors influencing employee turnover and uncover workforce trends. The analysis explores employee attrition across departments, overtime patterns, age groups, job satisfaction levels, and income distribution among different job roles.</p>
+        <div class="tags"><span class="tag">python</span><span class="tag">eda</span><span class="tag">hr-analytics</span></div>
+        <a class="repo-link" href="https://github.com/Nandhan357/IBM-HR_Analytics-project" target="_blank" rel="noopener">Open repository →</a>
+      </div>
+
+      <div class="card">
+        <h3>Customer Segmentation — RFM &amp; K-Means</h3>
+        <p>This project analyzes customer purchasing behavior from an Online Retail transactional dataset using RFM (Recency, Frequency, and Monetary) analysis and K-Means clustering. The objective is to identify distinct customer segments based on their purchasing behavior and derive actionable business insights that can support targeted marketing, customer retention, and loyalty strategies.</p>
+        <div class="tags"><span class="tag">python</span><span class="tag">clustering</span><span class="tag">rfm-analysis</span></div>
+        <a class="repo-link" href="https://github.com/Nandhan357/Customer-Segmentation-FM-KMeans" target="_blank" rel="noopener">Open repository →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What I Bring</h2>
+    <div class="bring-grid">
+      <div class="bring-card">
+        <h3>Data Analysis</h3>
+        <p>Cleaning, exploring, and interpreting datasets to find patterns that actually matter to a decision.</p>
+      </div>
+      <div class="bring-card">
+        <h3>Visualization</h3>
+        <p>Turning numbers into charts and dashboards that a non-technical stakeholder can read in seconds.</p>
+      </div>
+      <div class="bring-card">
+        <h3>Machine Learning</h3>
+        <p>Building and evaluating beginner-to-intermediate models with sound preprocessing and honest metrics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-bottom:none">
+    <h2>Let's Connect</h2>
+    <p class="section-intro">I'm actively looking for Data Analyst, Business Analyst, and ML Analyst opportunities. Reach out any of these ways.</p>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:asnandhan2004@gmail.com">
+        <span class="ic">✉</span>
+        <span><span class="meta">Email</span><br><span class="val">asnandhan2004@gmail.com</span></span>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/nandhan-a-s/" target="_blank" rel="noopener">
+        <span class="ic">in</span>
+        <span><span class="meta">LinkedIn</span><br><span class="val">linkedin.com/in/nandhan-a-s</span></span>
+      </a>
+      <a class="contact-card" href="tel:+917736227532">
+        <span class="ic">☎</span>
+        <span><span class="meta">Phone</span><br><span class="val">+91 77362 27532</span></span>
+      </a>
+      <a class="contact-card" href="https://github.com/Nandhan357" target="_blank" rel="noopener">
+        <span class="ic">◇</span>
+        <span><span class="meta">GitHub</span><br><span class="val">github.com/Nandhan357</span></span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>Nandhan A S — Data Analyst / Data Science · <a href="mailto:asnandhan2004@gmail.com">asnandhan2004@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
